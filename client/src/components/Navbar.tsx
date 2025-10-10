@@ -62,7 +62,7 @@ export const Navbar = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
               </button>
             ))}
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="p-2 bg-slate-800/50 backdrop-blur-sm rounded-lg border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:scale-110"
               aria-label="Toggle theme"
@@ -72,7 +72,7 @@ export const Navbar = () => {
               ) : (
                 <Moon className="w-5 h-5 text-blue-500" />
               )}
-            </button>
+            </button> */}
           </div>
 
           <div className="md:hidden flex items-center gap-4">
