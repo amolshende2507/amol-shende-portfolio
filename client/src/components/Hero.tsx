@@ -83,13 +83,15 @@ export const Hero = () => {
               View My Work
               <Globe className="w-5 h-5 group-hover:rotate-12 transition-transform" />
             </button>
-            <button
-              onClick={() => scrollToSection('contact')}
+            <a
+              href="/AmolS.cv.pdf"
+              download="AmolS.cv.pdf"
               className="group px-8 py-4 bg-slate-800/50 backdrop-blur-md border-2 border-cyan-400/50 rounded-full font-semibold text-lg hover:bg-cyan-400/10 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300 hover:scale-105 flex items-center gap-2 animate-pulse-slow"
             >
               <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
               Download Resume
-            </button>
+            </a>
+
           </div>
         </div>
       </div>

@@ -84,7 +84,9 @@ export const Contact = () => {
 
               <div className="space-y-4">
                 <a
-                  href="mailto:amol.shende@example.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=amolshende2507@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 group"
                 >
                   <div className="p-3 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg">
@@ -93,7 +95,7 @@ export const Contact = () => {
                   <div>
                     <p className="text-sm text-slate-400">Email</p>
                     <p className="text-slate-200 font-semibold group-hover:text-cyan-400 transition-colors">
-                      amol.shende@example.com
+                      amolshende2507@gmail.com
                     </p>
                   </div>
                 </a>
@@ -104,7 +106,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm text-slate-400">Phone</p>
-                    <p className="text-slate-200 font-semibold">+91 XXXXX XXXXX</p>
+                    <p className="text-slate-200 font-semibold">+91 7744991250</p>
                   </div>
                 </div>
               </div>

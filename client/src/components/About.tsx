@@ -20,9 +20,8 @@ export const About = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <h2
-          className={`text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             About Me
@@ -31,17 +30,16 @@ export const About = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div
-            className={`transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}
+            className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+              }`}
           >
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
               <div className="relative aspect-square rounded-3xl overflow-hidden border-2 border-cyan-400/30">
                 <img
-                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="amol.jpeg"
                   alt="Amol Shende"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
               </div>
@@ -49,9 +47,8 @@ export const About = () => {
           </div>
 
           <div
-            className={`space-y-6 transition-all duration-1000 delay-400 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}
+            className={`space-y-6 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              }`}
           >
             <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
               <p>
@@ -75,9 +72,8 @@ export const About = () => {
               {badges.map((badge, index) => (
                 <div
                   key={index}
-                  className={`group p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] ${
-                    isVisible ? 'animate-scale-in' : 'opacity-0'
-                  }`}
+                  className={`group p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] ${isVisible ? 'animate-scale-in' : 'opacity-0'
+                    }`}
                   style={{ animationDelay: `${600 + index * 100}ms` }}
                 >
                   <div className="flex items-center gap-3">
