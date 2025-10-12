@@ -22,6 +22,10 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  cloudinaryId: { // <-- ADD THIS FIELD
+    type: String,
+    required: true
+  },
   // 'githubUrl' and 'liveUrl' are optional, so they don't have 'required: true'.
   githubUrl: {
     type: String

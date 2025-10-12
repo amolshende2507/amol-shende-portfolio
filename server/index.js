@@ -10,6 +10,7 @@ const app = express();
 const User = require('./models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const { upload, cloudinary } = require('./config/cloudinaryConfig');
 
 // === MIDDLEWARE ===
 const auth = require('./middleware/auth');
@@ -145,53 +146,81 @@ app.get('/api/projects', async (req, res) => {
     res.status(500).json({ message: 'Server error while fetching projects' });
   }
 });
-app.post('/api/projects', auth, async (req, res) => {
-  try {
-    // We get the project details from the request body.
-    const { title, description, technologies, imageUrl, githubUrl, liveUrl, category } = req.body;
+// app.post('/api/projects', auth, async (req, res) => {
+//   try {
+//     // We get the project details from the request body.
+//     const { title, description, technologies, imageUrl, githubUrl, liveUrl, category } = req.body;
 
-    // Create a new project instance using our Project model.
+//     // Create a new project instance using our Project model.
+//     const newProject = new Project({
+//       title,
+//       description,
+//       technologies,
+//       imageUrl,
+//       githubUrl,
+//       liveUrl,
+//       category
+//     });
+
+//     // Save the new project to the database.
+//     const project = await newProject.save();
+
+//     // Send the newly created project back as the response.
+//     res.json(project);
+//   } catch (error) {
+//     console.error('Error creating project:', error);
+//     res.status(500).json({ message: 'Server error while creating project' });
+//   }
+// });
+// MODIFIED: POST route to create a new project (now with file upload)
+app.post('/api/projects', auth, upload.single('image'), async (req, res) => {
+  try {
+    // req.file is now available thanks to Multer. It contains the uploaded file info from Cloudinary.
+    if (!req.file) {
+      return res.status(400).json({ message: 'No image file uploaded.' });
+    }
+
+    const { title, description, technologies, githubUrl, liveUrl, category } = req.body;
+
     const newProject = new Project({
       title,
       description,
-      technologies,
-      imageUrl,
+      // Technologies will be sent as a comma-separated string from the form data
+      technologies: technologies.split(',').map(tech => tech.trim()),
+      imageUrl: req.file.path, // URL from Cloudinary
+      cloudinaryId: req.file.filename, // Unique ID from Cloudinary
       githubUrl,
       liveUrl,
       category
     });
 
-    // Save the new project to the database.
     const project = await newProject.save();
-
-    // Send the newly created project back as the response.
     res.json(project);
   } catch (error) {
     console.error('Error creating project:', error);
     res.status(500).json({ message: 'Server error while creating project' });
   }
 });
-app.put('/api/projects/:id', auth, async (req, res) => {
+app.put('/api/projects/:id', auth, upload.single('image'), async (req, res) => {
   try {
-    const { title, description, technologies, imageUrl, githubUrl, liveUrl, category } = req.body;
+    const { title, description, technologies, githubUrl, liveUrl, category } = req.body;
 
-    // Find the project by the ID passed in the URL parameters.
     let project = await Project.findById(req.params.id);
-
     if (!project) {
       return res.status(404).json({ message: 'Project not found' });
     }
 
-    // Update the project fields.
+    // --- We will NOT handle image updates for now to keep it simple ---
+    // A full implementation would delete the old image from Cloudinary (project.cloudinaryId)
+    // and upload the new one if req.file exists.
+    
     project.title = title;
     project.description = description;
-    project.technologies = technologies;
-    project.imageUrl = imageUrl;
+    project.technologies = technologies.split(',').map(tech => tech.trim());
     project.githubUrl = githubUrl;
     project.liveUrl = liveUrl;
     project.category = category;
 
-    // Save the updated project.
     await project.save();
 
     res.json(project);
@@ -206,15 +235,17 @@ app.put('/api/projects/:id', auth, async (req, res) => {
 app.delete('/api/projects/:id', auth, async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
-
     if (!project) {
       return res.status(404).json({ message: 'Project not found' });
     }
-    
-    // Mongoose 6+ remove() is deprecated, use deleteOne() on the model or instance.
-    // Using instance method for simplicity here.
+
+    // Delete image from Cloudinary
+    // We use the 'cloudinary' library directly for this
+    await cloudinary.uploader.destroy(project.cloudinaryId);
+
+    // Delete project from MongoDB
     await project.deleteOne();
-    
+
     res.json({ message: 'Project removed successfully' });
   } catch (error) {
     console.error('Error deleting project:', error);
