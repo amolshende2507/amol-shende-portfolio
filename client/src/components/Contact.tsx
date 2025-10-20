@@ -1,5 +1,5 @@
 import { useState, useRef, FormEvent, useEffect } from 'react';
-import { Mail, Send, Github, Linkedin, Twitter, CheckCircle, XCircle } from 'lucide-react';
+import { Mail, Send, Github, Linkedin,Instagram, CheckCircle, XCircle } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export const Contact = () => {
@@ -113,9 +113,9 @@ export const Contact = () => {
 
               <div className="flex gap-4 mt-8">
                 {[
-                  { Icon: Github, href: 'https://github.com/amolshende', color: 'hover:text-purple-400' },
-                  { Icon: Linkedin, href: 'https://linkedin.com/in/amolshende', color: 'hover:text-blue-400' },
-                  { Icon: Twitter, href: 'https://twitter.com/amolshende', color: 'hover:text-cyan-400' },
+                  { Icon: Github, href: 'https://github.com/amolshende2507', color: 'hover:text-purple-400' },
+                  { Icon: Linkedin, href: 'https://www.linkedin.com/in/amol-shende-9b5448291/', color: 'hover:text-blue-400' },
+                  { Icon: Instagram, href: 'https://www.instagram.com/its_amol_2525?igsh=NDAxOWNldnF2MHp5', color: 'hover:text-pink-400' },
                 ].map(({ Icon, href, color }) => (
                   <a
                     key={href}
@@ -128,6 +128,7 @@ export const Contact = () => {
                   </a>
                 ))}
               </div>
+
             </div>
           </div>
 

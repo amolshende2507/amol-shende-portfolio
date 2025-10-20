@@ -46,22 +46,29 @@ export const experiences: Experience[] = [
 ];
 
 export const skills: Skill[] = [
-  { name: 'React', category: 'frontend', level: 95 },
-  { name: 'TypeScript', category: 'frontend', level: 90 },
-  { name: 'Next.js', category: 'frontend', level: 85 },
-  { name: 'Tailwind CSS', category: 'frontend', level: 95 },
-  { name: 'JavaScript', category: 'frontend', level: 95 },
-  { name: 'HTML/CSS', category: 'frontend', level: 98 },
-  { name: 'Node.js', category: 'backend', level: 90 },
-  { name: 'Express', category: 'backend', level: 88 },
-  { name: 'MongoDB', category: 'backend', level: 85 },
-  { name: 'PostgreSQL', category: 'backend', level: 80 },
-  { name: 'REST APIs', category: 'backend', level: 92 },
-  { name: 'GraphQL', category: 'backend', level: 75 },
-  { name: 'Git', category: 'tools', level: 90 },
-  { name: 'Docker', category: 'tools', level: 75 },
-  { name: 'AWS', category: 'tools', level: 70 },
-  { name: 'Redis', category: 'tools', level: 72 },
-  { name: 'Socket.io', category: 'other', level: 85 },
-  { name: 'JWT', category: 'other', level: 88 }
+  // 🌐 Frontend
+  { name: 'React', category: 'frontend', level: 85 },
+  { name: 'TypeScript', category: 'frontend', level: 80 },
+  { name: 'Next.js', category: 'frontend', level: 70 },
+  { name: 'Tailwind CSS', category: 'frontend', level: 90 },
+  { name: 'JavaScript (ES6+)', category: 'frontend', level: 90 },
+  { name: 'HTML/CSS', category: 'frontend', level: 94 },
+
+
+  // ⚙️ Backend
+  { name: 'Node.js', category: 'backend', level: 85 },
+  { name: 'Express.js', category: 'backend', level: 83 },
+  { name: 'MongoDB', category: 'backend', level: 82 },
+  { name: 'REST APIs', category: 'backend', level: 90 },
+
+  // 🧰 Tools & DevOps
+  { name: 'Git & GitHub', category: 'tools', level: 92 },
+  { name: 'Postman', category: 'tools', level: 88 },
+  { name: 'Vercel / Netlify', category: 'tools', level: 70 },
+  { name: 'VS Code', category: 'tools', level: 95 },
+
+  // 🔒 Other / Additional
+  { name: 'JWT Authentication', category: 'other', level: 87 },
+  { name: 'UI/UX Design Principles', category: 'other', level: 88 },
 ];
+
