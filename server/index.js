@@ -11,7 +11,7 @@ const User = require('./models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { upload, cloudinary } = require('./config/cloudinaryConfig');
-
+const Experience = require('./models/Experience');
 // === MIDDLEWARE ===
 const auth = require('./middleware/auth');
 // Use CORS to allow cross-origin requests
@@ -252,8 +252,43 @@ app.delete('/api/projects/:id', auth, async (req, res) => {
     res.status(500).json({ message: 'Server error while deleting project' });
   }
 });
+app.get('/api/experiences', async (req, res) => {
+  try {
+    const experiences = await Experience.find({}).sort({ createdAt: 'desc' });
+    res.json(experiences);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error while fetching experiences' });
+  }
+});
+app.post('/api/experiences', auth, async (req, res) => {
+  try {
+    const newExperience = new Experience(req.body);
+    const experience = await newExperience.save();
+    res.json(experience);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error while creating experience' });
+  }
+});
 
+app.put('/api/experiences/:id', auth, async (req, res) => {
+  try {
+    const experience = await Experience.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!experience) return res.status(404).json({ message: 'Experience not found' });
+    res.json(experience);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error while updating experience' });
+  }
+});
 
+app.delete('/api/experiences/:id', auth, async (req, res) => {
+  try {
+    const experience = await Experience.findByIdAndDelete(req.params.id);
+    if (!experience) return res.status(404).json({ message: 'Experience not found' });
+    res.json({ message: 'Experience removed successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error while deleting experience' });
+  }
+});
 
 // Start the server
 app.listen(PORT, () => {
