@@ -1,4 +1,4 @@
-import { useState, useRef, FormEvent, useEffect } from 'react';
+import { useState, useRef, type FormEvent } from 'react';
 import { Mail, Send, Github, Linkedin,Instagram, CheckCircle, XCircle } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 

@@ -1,5 +1,5 @@
 // In client/src/pages/LoginPage.tsx
-import { useState, FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { LogIn, Loader2 } from 'lucide-react';

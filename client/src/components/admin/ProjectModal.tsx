@@ -1,6 +1,6 @@
 
 // In client/src/components/admin/ProjectModal.tsx
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import Modal from 'react-modal';
 import type { Project } from '../../types/portfolio';
 import { X } from 'lucide-react';
@@ -37,7 +37,7 @@ export const ProjectModal = ({ isOpen, onRequestClose, onSave, projectToEdit }: 
         imageUrl: projectToEdit.imageUrl,
         githubUrl: projectToEdit.githubUrl || '',
         liveUrl: projectToEdit.liveUrl || '',
-        category: projectToedit.category,
+        category: projectToEdit.category,
       });
       setImageFile(null);
     } else {

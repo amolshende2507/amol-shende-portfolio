@@ -39,12 +39,12 @@ export const Experience = () => {
 
         {experiences.map((exp, index) => {
           const IconComponent = iconMap[exp.icon as keyof typeof iconMap] || Briefcase;
-          const isEven = index % 2 === 0;
+
 
           return (
-            <div key={exp._id} className={`relative mb-16 ...`}>
-              {/* ... The rest of your existing JSX for rendering the timeline item ... */}
-              {/* Just make sure you are using 'exp.title', 'exp.organization', etc. */}
+            <div key={exp._id} className={`relative mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${400 + index * 200}ms` }}
+            >
               <IconComponent className="w-8 h-8 text-cyan-400" />
             </div>
           );

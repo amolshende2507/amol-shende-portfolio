@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import Modal from 'react-modal';
 import type { Experience } from '../../types/portfolio';
 import { X } from 'lucide-react';
@@ -10,6 +10,7 @@ interface ExperienceModalProps {
     onRequestClose: () => void;
     onSave: (experience: Omit<Experience, '_id'>) => void;
     experienceToEdit: Experience | null;
+
 }
 
 const initialState = { title: '', organization: '', period: '', description: '', icon: '' };
