@@ -1,7 +1,7 @@
 import { useState, useRef, type FormEvent } from 'react';
 import { Mail, Send, Github, Linkedin,Instagram, CheckCircle, XCircle } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-
+import API from '../api/axios';
 export const Contact = () => {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useScrollAnimation(ref);
@@ -14,21 +14,8 @@ export const Contact = () => {
     setStatus('sending');
 
     try {
-      console.log('Attempting to send fetch request to backend...'); // New log line
-
-      const response = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      console.log('Fetch request completed. Response received:', response); // New log line
-
-      if (!response.ok) {
-        throw new Error(`Backend responded with status: ${response.status}`);
-      }
+       // 2. USE the API instance. We only need the endpoint path.
+      await API.post('/api/contact', formData);
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -42,12 +29,7 @@ export const Contact = () => {
       setTimeout(() => setStatus('idle'), 4000);
     }
   };
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/api/test')
-  //     .then(res => res.json())
-  //     .then(data => console.log('MESSAGE FROM BACKEND:', data.message))
-  //     .catch(err => console.error('Error fetching from backend:', err));
-  // }, []);
+
 
   return (
     <section id="contact" ref={ref} className="py-24 px-6 relative overflow-hidden">
