@@ -15,7 +15,30 @@ const Experience = require('./models/Experience');
 // === MIDDLEWARE ===
 const auth = require('./middleware/auth');
 // Use CORS to allow cross-origin requests
-app.use(cors());
+// In server/index.js
+
+// REPLACE your old corsOptions block with this one
+const whitelist = [
+  'https://your-vercel-app-url.vercel.app', // <-- Replace with your ACTUAL Vercel URL
+  'http://localhost:5173' // Your local development URL
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // The 'origin' is the URL making the request (e.g., http://localhost:5173)
+    // We check if the incoming origin is on our whitelist.
+    // The '!origin' part allows requests from tools like Postman that don't have an origin.
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Block the request
+    }
+  },
+  optionsSuccessStatus: 200
+};
+
+
+app.use(cors(corsOptions));
 // Use body-parser to parse incoming JSON data
 app.use(bodyParser.json());
 
@@ -213,7 +236,7 @@ app.put('/api/projects/:id', auth, upload.single('image'), async (req, res) => {
     // --- We will NOT handle image updates for now to keep it simple ---
     // A full implementation would delete the old image from Cloudinary (project.cloudinaryId)
     // and upload the new one if req.file exists.
-    
+
     project.title = title;
     project.description = description;
     project.technologies = technologies.split(',').map(tech => tech.trim());

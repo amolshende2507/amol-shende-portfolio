@@ -42,12 +42,12 @@ export const Contact = () => {
       setTimeout(() => setStatus('idle'), 4000);
     }
   };
-  useEffect(() => {
-    fetch('http://localhost:5000/api/test')
-      .then(res => res.json())
-      .then(data => console.log('MESSAGE FROM BACKEND:', data.message))
-      .catch(err => console.error('Error fetching from backend:', err));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/api/test')
+  //     .then(res => res.json())
+  //     .then(data => console.log('MESSAGE FROM BACKEND:', data.message))
+  //     .catch(err => console.error('Error fetching from backend:', err));
+  // }, []);
 
   return (
     <section id="contact" ref={ref} className="py-24 px-6 relative overflow-hidden">

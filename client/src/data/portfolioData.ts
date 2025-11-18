@@ -44,31 +44,23 @@ export const experiences: Experience[] = [
     icon: 'git-branch'
   }
 ];
-
 export const skills: Skill[] = [
-  // 🌐 Frontend
-  { name: 'React', category: 'frontend', level: 85 },
-  { name: 'TypeScript', category: 'frontend', level: 80 },
-  { name: 'Next.js', category: 'frontend', level: 70 },
-  { name: 'Tailwind CSS', category: 'frontend', level: 90 },
-  { name: 'JavaScript (ES6+)', category: 'frontend', level: 90 },
-  { name: 'HTML/CSS', category: 'frontend', level: 94 },
-
-
-  // ⚙️ Backend
-  { name: 'Node.js', category: 'backend', level: 85 },
-  { name: 'Express.js', category: 'backend', level: 83 },
-  { name: 'MongoDB', category: 'backend', level: 82 },
-  { name: 'REST APIs', category: 'backend', level: 90 },
-
-  // 🧰 Tools & DevOps
-  { name: 'Git & GitHub', category: 'tools', level: 92 },
-  { name: 'Postman', category: 'tools', level: 88 },
-  { name: 'Vercel / Netlify', category: 'tools', level: 70 },
-  { name: 'VS Code', category: 'tools', level: 95 },
-
-  // 🔒 Other / Additional
-  { name: 'JWT Authentication', category: 'other', level: 87 },
-  { name: 'UI/UX Design Principles', category: 'other', level: 88 },
+  { name: 'React', category: 'frontend' }, // <-- FIXED
+  { name: 'TypeScript', category: 'frontend' }, // <-- FIXED
+  { name: 'Next.js', category: 'frontend' },
+  { name: 'Tailwind CSS', category: 'frontend' },
+  { name: 'JavaScript', category: 'frontend' },
+  { name: 'HTML/CSS', category: 'frontend' },
+  { name: 'Node.js', category: 'backend' },
+  { name: 'Express', category: 'backend' },
+  { name: 'MongoDB', category: 'backend' },
+  { name: 'PostgreSQL', category: 'backend' },
+  { name: 'REST APIs', category: 'backend' },
+  { name: 'GraphQL', category: 'backend' },
+  { name: 'Git', category: 'tools' },
+  { name: 'Docker', category: 'tools' },
+  { name: 'AWS', category: 'tools' },
+  { name: 'Redis', category: 'tools' },
+  { name: 'Socket.io', category: 'other' },
+  { name: 'JWT', category: 'other' }
 ];
-

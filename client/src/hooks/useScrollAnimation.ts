@@ -1,4 +1,4 @@
-import { useEffect, useState, RefObject } from 'react';
+import { useEffect, useState, type RefObject } from 'react';
 
 export const useScrollAnimation = (ref: RefObject<HTMLElement>) => {
   const [isVisible, setIsVisible] = useState(false);

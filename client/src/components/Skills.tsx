@@ -91,7 +91,7 @@ export const Skills = () => {
                         <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                       <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-slate-900 px-3 py-1 rounded-lg border border-cyan-400/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-                        <span className="text-sm text-cyan-400 font-semibold">Proficiency: {skill.level}%</span>
+                        {/* <span className="text-sm text-cyan-400 font-semibold"></span> */}
                       </div>
                     </div>
                   ))}
