@@ -37,7 +37,7 @@ export const About = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
               <div className="relative aspect-square rounded-3xl overflow-hidden border-2 border-cyan-400/30">
                 <img
-                  src="amol.jpg"
+                  src="https://i.postimg.cc/76h2GHjC/amol.jpg"
                   alt="Amol Shende"
                   className="w-full h-full object-cover transition-all duration-500"
                 />
