@@ -2,7 +2,7 @@
 
 // 1. IMPORT necessary hooks and libraries
 import { useState, useEffect, useRef } from 'react';
-import axios from 'axios'; // Import axios for API calls
+import API from '../api/axios'; // Import axios for API calls
 import { ExternalLink, Github, Filter, Loader2 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 // We are no longer importing from portfolioData, so we can remove it.
@@ -26,7 +26,7 @@ export const Projects = () => {
     const fetchProjects = async () => {
       try {
         // Make a GET request to our backend API endpoint
-        const response = await axios.get('http://localhost:5000/api/projects');
+        const response = await API.get('/api/projects');
         const projectsData: Project[] = response.data;
 
         // Store the fetched data

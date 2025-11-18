@@ -1,6 +1,6 @@
 // In client/src/components/Experience.tsx
 import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import API from '../api/axios'
 import { Briefcase, Users, Code, Trophy, GitBranch } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import type { Experience as ExperienceType } from '../types/portfolio';
@@ -22,7 +22,7 @@ export const Experience = () => {
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/experiences');
+        const response = await API.get('/api/experiences');
         setExperiences(response.data);
       } catch (error) {
         console.error("Failed to fetch experiences", error);

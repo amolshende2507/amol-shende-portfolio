@@ -1,14 +1,13 @@
 // client/src/pages/AdminDashboard.tsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../api/axios'; 
 import { LogOut, Edit, Trash2, PlusCircle } from 'lucide-react';
 
 import type { Project, Experience } from '../types/portfolio';
 import { ProjectModal } from '../components/admin/ProjectModal';
 import { ExperienceModal } from '../components/admin/ExperienceModal';
 
-// --- Helper for API auth header ---
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');
   return {
@@ -40,7 +39,7 @@ export const AdminDashboard = () => {
   // -----------------------------
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/projects');
+      const response = await API.get('/api/projects'); 
       setProjects(response.data);
     } catch {
       setError('Failed to fetch projects.');
@@ -49,7 +48,7 @@ export const AdminDashboard = () => {
 
   const fetchExperiences = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/experiences');
+      const response = await API.get('/api/experiences');
       setExperiences(response.data);
     } catch {
       setError('Failed to fetch experiences.');
@@ -89,13 +88,9 @@ export const AdminDashboard = () => {
   const handleSaveProject = async (formData: FormData) => {
     try {
       if (projectToEdit) {
-        await axios.put(
-          `http://localhost:5000/api/projects/${projectToEdit._id}`,
-          formData,
-          getAuthHeaders()
-        );
+        await API.put(`/api/projects/${projectToEdit._id}`, formData, getAuthHeaders());
       } else {
-        await axios.post('http://localhost:5000/api/projects', formData, getAuthHeaders());
+        await API.post('/api/projects', formData, getAuthHeaders());
       }
       setIsModalOpen(false);
       fetchProjects();
@@ -108,7 +103,7 @@ export const AdminDashboard = () => {
   const handleDeleteProject = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this project?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/projects/${id}`, getAuthHeaders());
+        await API.delete(`/api/projects/${id}`, getAuthHeaders());
         fetchProjects();
       } catch (err) {
         console.error('Failed to delete project:', err);
@@ -123,13 +118,13 @@ export const AdminDashboard = () => {
   const handleSaveExperience = async (experienceData: Omit<Experience, '_id'>) => {
     try {
       if (experienceToEdit) {
-        await axios.put(
-          `http://localhost:5000/api/experiences/${experienceToEdit._id}`,
+        await API.put(
+          `api/experiences/${experienceToEdit._id}`,
           experienceData,
           getAuthHeaders()
         );
       } else {
-        await axios.post('http://localhost:5000/api/experiences', experienceData, getAuthHeaders());
+        await API.post('api/experiences', experienceData, getAuthHeaders());
       }
       setIsExperienceModalOpen(false);
       fetchExperiences();
@@ -141,7 +136,7 @@ export const AdminDashboard = () => {
   const handleDeleteExperience = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this experience?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/experiences/${id}`, getAuthHeaders());
+        await API.delete(`/api/experiences/${id}`, getAuthHeaders());
         fetchExperiences();
       } catch {
         alert('Error deleting experience.');
