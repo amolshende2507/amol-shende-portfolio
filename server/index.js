@@ -81,13 +81,14 @@ app.post('/api/contact', async (req, res) => {
   // Set up the email transporter using Nodemailer
   // This uses the credentials from your .env file
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      // Nodemailer now uses the credentials you provided
-      user: process.env.EMAIL_USER, // <-- Reads 'your.email.address@gmail.com'
-      pass: process.env.EMAIL_PASS, // <-- Reads 'abdcdefghijklmnop'
-    },
-  });
+  host: 'smtp-relay.brevo.com', // Brevo's SMTP server
+  port: 587, // Brevo's recommended port
+  secure: false, // false for port 587
+  auth: {
+    user: process.env.EMAIL_USER,    // Your Brevo login email
+    pass: process.env.BREVO_SMTP_KEY, // The SMTP key you created
+  },
+});
 
   // Define the email options
   const mailOptions = {
