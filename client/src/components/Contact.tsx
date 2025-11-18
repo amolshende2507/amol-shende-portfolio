@@ -1,7 +1,8 @@
 import { useState, useRef, type FormEvent } from 'react';
-import { Mail, Send, Github, Linkedin,Instagram, CheckCircle, XCircle } from 'lucide-react';
+import { Mail, Send, Github, Linkedin, Instagram, CheckCircle, XCircle } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import API from '../api/axios';
+import API from '../api/axios'; // <-- 1. IMPORT our central API instance
+
 export const Contact = () => {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useScrollAnimation(ref);
@@ -10,20 +11,17 @@ export const Contact = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Form submission triggered!'); // You should see this line.
     setStatus('sending');
 
     try {
-       // 2. USE the API instance. We only need the endpoint path.
+      // 2. USE the API instance. We only need the endpoint path.
       await API.post('/api/contact', formData);
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
 
     } catch (error) {
-      // THIS IS THE MOST IMPORTANT PART
-      console.error('!!! FETCH ERROR OCCURRED !!!'); // New log line
-      console.error(error); // This will print the exact error object
+      console.error('Failed to send message:', error);
       setStatus('error');
     } finally {
       setTimeout(() => setStatus('idle'), 4000);
