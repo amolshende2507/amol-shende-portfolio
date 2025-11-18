@@ -2,9 +2,9 @@
 
 import { Routes, Route, Outlet } from 'react-router-dom';
 
-import { PortfolioPage } from './pages/PortfolioPage'; // We will create this
-import { LoginPage } from './pages/LoginPage';
-import { AdminDashboard } from './pages/AdminDashboard'; 
+import { PortfolioPage } from './temp_pages/PortfolioPage'; // We will create this
+import { LoginPage } from './temp_pages/LoginPage';
+import { AdminDashboard } from './temp_pages/AdminDashboard'; 
 
 
 import { ProtectedRoute } from './utils/ProtectedRoute';
